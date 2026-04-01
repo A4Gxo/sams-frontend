@@ -18,7 +18,7 @@ export default function FacultyReports() {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    axios.get("http://localhost:8000/faculty/dashboard-data", {
+    axios.get("https://sams-zsar.onrender.com/faculty/dashboard-data", {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then(res => {
@@ -37,7 +37,7 @@ export default function FacultyReports() {
     setLoadingReport(true);
     
     try {
-      const res = await axios.get(`http://localhost:8000/faculty/course-report/${subject.id}`, {
+      const res = await axios.get(`https://sams-zsar.onrender.com/faculty/course-report/${subject.id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setReportData(res.data);

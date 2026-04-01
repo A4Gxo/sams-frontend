@@ -25,7 +25,7 @@ export default function LiveAttendance() {
 
   const fetchLiveCheckIns = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/attendance/live-stream");
+      const res = await axios.get("https://sams-zsar.onrender.com/attendance/live-stream");
       setPresentStudents(res.data.students);
       setStats(prev => ({ ...prev, present: res.data.students.length }));
     } catch (err) {

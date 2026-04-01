@@ -33,7 +33,7 @@ export default function MarkAttendance() {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:8000/faculty/dashboard-data", { headers })
+    axios.get("https://sams-zsar.onrender.com/faculty/dashboard-data", { headers })
       .then(res => setSubjects(res.data.subjects || []))
       .catch(err => console.error("API ERROR:", err.response?.data || err.message));
   }, []);
@@ -47,7 +47,7 @@ export default function MarkAttendance() {
     setSelectedDateStr(todayStr);
 
     try {
-      const histRes = await axios.get(`http://localhost:8000/attendance/faculty/history/${sub.id}`, { headers });
+      const histRes = await axios.get(`https://sams-zsar.onrender.com/attendance/faculty/history/${sub.id}`, { headers });
       setHistory(histRes.data.history || []);
       fetchDateRoster(sub.id, todayStr);
     } catch (err) {
@@ -60,7 +60,7 @@ export default function MarkAttendance() {
   const fetchDateRoster = async (courseId, dateStr) => {
     setRosterLoading(true);
     try {
-      const res = await axios.get(`http://localhost:8000/attendance/roster/${courseId}/${dateStr}`, { headers });
+      const res = await axios.get(`https://sams-zsar.onrender.com/attendance/roster/${courseId}/${dateStr}`, { headers });
       setStudents(res.data.students || []);
     } catch (err) {
       console.error("Failed to fetch roster", err);
@@ -86,7 +86,7 @@ export default function MarkAttendance() {
     ));
 
     try {
-      await axios.post("http://localhost:8000/attendance/autonomous-mark", {
+      await axios.post("https://sams-zsar.onrender.com/attendance/autonomous-mark", {
         course_id: selectedSubject.id, 
         student_id: studentId,
         status: newStatus,
@@ -94,7 +94,7 @@ export default function MarkAttendance() {
       }, { headers });
       
       // Silently refresh history in background
-      axios.get(`http://localhost:8000/attendance/faculty/history/${selectedSubject.id}`, { headers })
+      axios.get(`https://sams-zsar.onrender.com/attendance/faculty/history/${selectedSubject.id}`, { headers })
         .then(res => setHistory(res.data.history || []));
 
     } catch (err) {

@@ -21,7 +21,7 @@ export default function StartSession() {
   useEffect(() => {
     const fetchMyCourses = async () => {
       try {
-        const res = await axios.get("http://127.0.0.1:8000/faculty/dashboard-data", { headers });
+        const res = await axios.get("https://sams-zsar.onrender.com/faculty/dashboard-data", { headers });
         const mySubjects = res.data.subjects || [];
         setCourses(mySubjects);
         if (mySubjects.length > 0) setSelectedCourse(mySubjects[0].id);
@@ -38,7 +38,7 @@ export default function StartSession() {
     if (isLive && sessionId) {
       const fetchCount = async () => {
         try {
-          const res = await axios.get(`http://127.0.0.1:8000/attendance/live/${sessionId}`, { headers });
+          const res = await axios.get(`https://sams-zsar.onrender.com/attendance/live/${sessionId}`, { headers });
           setCheckInCount(res.data.students.length);
         } catch (err) {
           console.error("Polling failed");
@@ -62,7 +62,7 @@ export default function StartSession() {
           lat: position.coords.latitude, 
           lng: position.coords.longitude 
         };
-        const response = await axios.post("http://127.0.0.1:8000/attendance/session/start", payload, { headers });
+        const response = await axios.post("https://sams-zsar.onrender.com/attendance/session/start", payload, { headers });
         
         setSessionCode(response.data.otp_code);
         setSessionId(response.data.session_id);
@@ -80,7 +80,7 @@ export default function StartSession() {
 
   const terminateSession = async () => {
     try {
-      await axios.post(`http://127.0.0.1:8000/attendance/session/terminate/${sessionId}`, {}, { headers });
+      await axios.post(`https://sams-zsar.onrender.com/attendance/session/terminate/${sessionId}`, {}, { headers });
       setIsLive(false);
       setCheckInCount(0);
     } catch (err) {

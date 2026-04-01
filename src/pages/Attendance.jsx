@@ -12,7 +12,7 @@ export default function Attendance() {
 
   // 1. Fetch courses assigned to this faculty on load
   useEffect(() => {
-    // In a real app, you'd fetch from: http://127.0.0.1:8000/courses/
+    // In a real app, you'd fetch from: https://sams-zsar.onrender.com/courses/
     // For now, using mock data to show the UI
     setCourses([
       { id: 1, name: "Data Structures", code: "CS101" },
@@ -50,7 +50,7 @@ export default function Attendance() {
 
   const handleSubmit = async () => {
     setMessage({ type: "info", text: "Saving attendance..." });
-    // Logic to loop through 'students' and POST to http://127.0.0.1:8000/attendance/
+    // Logic to loop through 'students' and POST to https://sams-zsar.onrender.com/attendance/
     setTimeout(() => {
       setMessage({ type: "success", text: "Attendance marked successfully!" });
     }, 1500);

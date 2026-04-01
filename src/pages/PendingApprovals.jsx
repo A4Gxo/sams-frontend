@@ -19,7 +19,7 @@ export default function PendingApprovals() {
 
   const fetchRequests = async () => {
     try {
-      const res = await axios.get("http://127.0.0.1:8000/admin/approvals/pending", { headers });
+      const res = await axios.get("https://sams-zsar.onrender.com/admin/approvals/pending", { headers });
       setRequests(res.data);
     } catch (err) {
       console.error("Failed to fetch approvals");
@@ -34,9 +34,9 @@ export default function PendingApprovals() {
     setProcessingId(userId);
     try {
       if (action === "approve") {
-        await axios.put(`http://127.0.0.1:8000/admin/approvals/${userId}/approve`, {}, { headers });
+        await axios.put(`https://sams-zsar.onrender.com/admin/approvals/${userId}/approve`, {}, { headers });
       } else {
-        await axios.delete(`http://127.0.0.1:8000/admin/approvals/${userId}/reject`, { headers });
+        await axios.delete(`https://sams-zsar.onrender.com/admin/approvals/${userId}/reject`, { headers });
       }
       // Remove the processed user from the list
       setRequests(requests.filter(req => req.user_id !== userId));

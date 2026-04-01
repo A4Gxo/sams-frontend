@@ -37,8 +37,8 @@ export default function Faculty() {
     setLoading(true);
     try {
       const [facultyRes, deptRes] = await Promise.all([
-        axios.get("http://127.0.0.1:8000/faculty/", { headers }),
-        axios.get("http://127.0.0.1:8000/departments/", { headers })
+        axios.get("https://sams-zsar.onrender.com/faculty/", { headers }),
+        axios.get("https://sams-zsar.onrender.com/departments/", { headers })
       ]);
       setFaculty(facultyRes.data);
       setDepartments(deptRes.data);
@@ -54,7 +54,7 @@ export default function Faculty() {
     setIsSubmitting(true);
     try {
       const payload = { ...addForm, department_id: parseInt(addForm.department_id) };
-      await axios.post("http://127.0.0.1:8000/admin/faculty", payload);
+      await axios.post("https://sams-zsar.onrender.com/admin/faculty", payload);
       setIsAddModalOpen(false);
       await fetchData(); // Refresh list immediately
       setAddForm({ username: "", password_hash: "", first_name: "", last_name: "", department_id: "", role: "faculty" });
@@ -75,7 +75,7 @@ export default function Faculty() {
         last_name: editForm.last_name,
         department_id: parseInt(editForm.department_id)
       };
-      await axios.put(`http://127.0.0.1:8000/faculty/${selectedFaculty.faculty_id}`, payload, { headers });
+      await axios.put(`https://sams-zsar.onrender.com/faculty/${selectedFaculty.faculty_id}`, payload, { headers });
       setIsEditing(false);
       setIsProfileModalOpen(false);
       fetchData();
@@ -90,7 +90,7 @@ export default function Faculty() {
     if (!window.confirm(`Remove ${selectedFaculty.first_name}?`)) return;
     setIsSubmitting(true);
     try {
-      await axios.delete(`http://127.0.0.1:8000/faculty/${selectedFaculty.faculty_id}`, { headers });
+      await axios.delete(`https://sams-zsar.onrender.com/faculty/${selectedFaculty.faculty_id}`, { headers });
       setIsProfileModalOpen(false);
       fetchData();
     } catch (err) { 

@@ -41,7 +41,7 @@ export default function Register() {
 
     try {
       // Point to the correct external registration endpoint
-      await axios.post('http://localhost:8000/auth/register', payload);
+      await axios.post('https://sams-zsar.onrender.com/auth/register', payload);
       setStatus("success");
     } catch (err) {
       console.error("Registration Error:", err.response?.data); // Helpful for debugging

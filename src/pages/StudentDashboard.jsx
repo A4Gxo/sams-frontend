@@ -20,7 +20,7 @@ export default function StudentDashboard() {
   const fetchStudentData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await axios.get("http://localhost:8000/students/dashboard-data", {
+      const res = await axios.get("https://sams-zsar.onrender.com/students/dashboard-data", {
         headers: { Authorization: `Bearer ${token}` }
       });
       setData(res.data);

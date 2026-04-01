@@ -19,7 +19,7 @@ export default function AdminReports() {
 
   const fetchMasterReport = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/admin/master-report", {
+      const response = await axios.get("https://sams-zsar.onrender.com/admin/master-report", {
         headers: { Authorization: `Bearer ${token}` }
       });
       setReportData(response.data);

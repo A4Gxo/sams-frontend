@@ -21,7 +21,7 @@ export default function Reports() {
 
         if (userRole === "faculty") {
           // --- FACULTY FETCH ---
-          const res = await axios.get(`http://localhost:8000/faculty/reports-data`, {
+          const res = await axios.get(`https://sams-zsar.onrender.com/faculty/reports-data`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           
@@ -42,7 +42,7 @@ export default function Reports() {
             setLoading(false);
             return;
           }
-          const res = await axios.get(`http://localhost:8000/student/reports/${studentId}`, {
+          const res = await axios.get(`https://sams-zsar.onrender.com/student/reports/${studentId}`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           normalizedData = res.data || [];

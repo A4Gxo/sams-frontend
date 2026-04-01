@@ -32,7 +32,7 @@ export default function AttendanceSummaries() {
       if (filters.course_id) params.append('course_id', filters.course_id);
       if (filters.semester_name) params.append('semester_name', filters.semester_name);
 
-      const response = await axios.get(`http://127.0.0.1:8000/admin/attendance-summaries?${params.toString()}`, {
+      const response = await axios.get(`https://sams-zsar.onrender.com/admin/attendance-summaries?${params.toString()}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setReports(response.data);

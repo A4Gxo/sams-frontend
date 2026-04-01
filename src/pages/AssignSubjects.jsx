@@ -71,7 +71,7 @@ export default function AssignSubjects() {
 
     try {
       const promises = selectedStudents.map(studentId => 
-        axios.post("http://127.0.0.1:8000/enrollments/", {
+        axios.post("https://sams-zsar.onrender.com/enrollments/", {
           student_id: studentId,
           course_id: parseInt(activeCourseId)
         }, { headers: { Authorization: `Bearer ${token}` } })
@@ -100,7 +100,7 @@ export default function AssignSubjects() {
     const token = localStorage.getItem("token");
 
     try {
-      await axios.put(`http://127.0.0.1:8000/admin/courses/${activeCourseId}/assign-faculty`, {
+      await axios.put(`https://sams-zsar.onrender.com/admin/courses/${activeCourseId}/assign-faculty`, {
         faculty_id: activeFaculty.faculty_id
       }, { headers: { Authorization: `Bearer ${token}` } });
       

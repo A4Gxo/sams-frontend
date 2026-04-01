@@ -16,7 +16,7 @@ export default function SessionCalendar() {
 
   // 1. Fetch Subjects on load
   useEffect(() => {
-    axios.get("http://localhost:8000/faculty/dashboard-data", { headers })
+    axios.get("https://sams-zsar.onrender.com/faculty/dashboard-data", { headers })
       .then(res => setSubjects(res.data.subjects || []))
       .catch(err => console.error("API Error:", err));
   }, []);
@@ -25,7 +25,7 @@ export default function SessionCalendar() {
   const fetchHistory = async (courseId) => {
     setLoading(true);
     try {
-      const res = await axios.get(`http://localhost:8000/attendance/faculty/history/${courseId}`, { headers });
+      const res = await axios.get(`https://sams-zsar.onrender.com/attendance/faculty/history/${courseId}`, { headers });
       setHistory(res.data.history || []);
     } catch (err) {
       console.error("History fetch error:", err);

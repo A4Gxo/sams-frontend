@@ -22,7 +22,7 @@ export default function FacultyAnalytics() {
       try {
         const token = localStorage.getItem("token");
         // Ensure this URL perfectly matches your Python backend route
-        const res = await axios.get("http://127.0.0.1:8000/faculty/analytics", {
+        const res = await axios.get("https://sams-zsar.onrender.com/faculty/analytics", {
           headers: { Authorization: `Bearer ${token}` }
         });
         setChartData(res.data);

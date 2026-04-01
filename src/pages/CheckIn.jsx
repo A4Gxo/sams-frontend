@@ -48,7 +48,7 @@ export default function CheckIn() {
       }
 
       try {
-        const res = await axios.get(`http://127.0.0.1:8000/students/dashboard-data`, { headers });
+        const res = await axios.get(`https://sams-zsar.onrender.com/students/dashboard-data`, { headers });
         
         if (res.data.live_sessions && res.data.live_sessions.length > 0) {
           const sessions = res.data.live_sessions.map(s => ({
@@ -103,7 +103,7 @@ export default function CheckIn() {
 
     try {
       const payload = { session_id: sessId, student_id: sId, otp_code: otpVal, lat: coords.lat, lng: coords.lng };
-      await axios.post("http://127.0.0.1:8000/attendance/verify", payload, { headers });
+      await axios.post("https://sams-zsar.onrender.com/attendance/verify", payload, { headers });
       setStatus("success");
     } catch (err) {
       setStatus("error");

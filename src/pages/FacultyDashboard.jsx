@@ -31,7 +31,7 @@ export default function FacultyDashboard() {
     if (activeSession) {
       const fetchLiveAttendance = async () => {
         try {
-          const res = await axios.get(`http://127.0.0.1:8000/attendance/live/${activeSession.session_id}`, { headers });
+          const res = await axios.get(`https://sams-zsar.onrender.com/attendance/live/${activeSession.session_id}`, { headers });
           setLiveStudents(res.data.students || []); 
         } catch (err) {
           console.error("Live sync failed");
@@ -52,7 +52,7 @@ export default function FacultyDashboard() {
     }
 
     try {
-      const res = await axios.get("http://127.0.0.1:8000/faculty/dashboard-data", { headers });
+      const res = await axios.get("https://sams-zsar.onrender.com/faculty/dashboard-data", { headers });
       setCourses(res.data.subjects || []);
       setLoading(false);
     } catch (err) {
@@ -81,7 +81,7 @@ export default function FacultyDashboard() {
           lng: pos.coords.longitude
         };
 
-        const res = await axios.post("http://127.0.0.1:8000/attendance/session/start", payload, { headers });
+        const res = await axios.post("https://sams-zsar.onrender.com/attendance/session/start", payload, { headers });
         
         setActiveSession({
           session_id: res.data.session_id,
@@ -102,7 +102,7 @@ export default function FacultyDashboard() {
   const handleEndSession = async () => {
     if (!activeSession) return;
     try {
-      await axios.post(`http://127.0.0.1:8000/attendance/session/terminate/${activeSession.session_id}`, {}, { headers });
+      await axios.post(`https://sams-zsar.onrender.com/attendance/session/terminate/${activeSession.session_id}`, {}, { headers });
       setActiveSession(null);
     } catch (err) {
       console.error("Termination failed", err);

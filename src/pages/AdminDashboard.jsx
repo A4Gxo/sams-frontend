@@ -52,7 +52,7 @@ export default function AdminDashboard() {
 
   const fetchActivityLogs = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/admin/activity-logs", {
+      const response = await axios.get("https://sams-zsar.onrender.com/admin/activity-logs", {
         headers: { Authorization: `Bearer ${token}` }
       });
       setActivityLogs(response.data);
@@ -78,7 +78,7 @@ export default function AdminDashboard() {
 
   const fetchAdminStats = async () => {
     try {
-      const response = await axios.get("http://127.0.0.1:8000/admin/stats", {
+      const response = await axios.get("https://sams-zsar.onrender.com/admin/stats", {
         headers: { Authorization: `Bearer ${token}` }
       });
       setData(response.data);

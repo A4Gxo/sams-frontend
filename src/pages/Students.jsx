@@ -39,8 +39,8 @@ export default function Students() {
     setLoading(true);
     try {
       const [studentRes, deptRes] = await Promise.all([
-        axios.get("http://127.0.0.1:8000/students/", { headers }),
-        axios.get("http://127.0.0.1:8000/departments/", { headers })
+        axios.get("https://sams-zsar.onrender.com/students/", { headers }),
+        axios.get("https://sams-zsar.onrender.com/departments/", { headers })
       ]);
       setStudents(studentRes.data);
       setDepartments(deptRes.data);
@@ -60,7 +60,7 @@ export default function Students() {
         department_id: parseInt(addForm.department_id), 
         year_of_study: parseInt(addForm.year_of_study) 
       };
-      await axios.post("http://127.0.0.1:8000/auth/register", payload);
+      await axios.post("https://sams-zsar.onrender.com/auth/register", payload);
       setIsAddModalOpen(false);
       fetchData();
       setAddForm({ username: "", password: "password123", first_name: "", last_name: "", roll_no: "", department_id: "", year_of_study: 1, role: "student" });
@@ -73,7 +73,7 @@ export default function Students() {
     e.preventDefault();
     setIsSubmitting(true);
     try {
-      await axios.put(`http://127.0.0.1:8000/students/${selectedStudent.student_id}`, editForm, { headers });
+      await axios.put(`https://sams-zsar.onrender.com/students/${selectedStudent.student_id}`, editForm, { headers });
       setIsEditing(false);
       setIsProfileModalOpen(false);
       fetchData();
@@ -86,7 +86,7 @@ export default function Students() {
     if (!window.confirm(`Delete ${selectedStudent.first_name} permanently?`)) return;
     setIsSubmitting(true);
     try {
-      await axios.delete(`http://127.0.0.1:8000/students/${selectedStudent.student_id}`, { headers });
+      await axios.delete(`https://sams-zsar.onrender.com/students/${selectedStudent.student_id}`, { headers });
       setIsProfileModalOpen(false);
       fetchData();
     } catch (err) {

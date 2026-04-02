@@ -1,6 +1,6 @@
 // src/services/api.js
 
-const API = "http://127.0.0.1:8000";
+const API = "https://sams-zsar.onrender.com"; // <-- Updated to production URL
 
 export const loginUser = async (email, password) => {
   // Your specific backend expects standard JSON, not Form Data!

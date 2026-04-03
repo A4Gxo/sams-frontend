@@ -31,7 +31,7 @@ export default function CheckIn() {
             setErrorMsg("GPS ACCESS DENIED. PLEASE ENABLE LOCATION.");
             setStatus("error");
         },
-        { enableHighAccuracy: true, timeout: 10000 }
+        { enableHighAccuracy: false, timeout: 10000 }
       );
     } else {
       setErrorMsg("BROWSER DOES NOT SUPPORT GPS.");

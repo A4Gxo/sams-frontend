@@ -30,7 +30,7 @@ export default function AssignSubjects() {
 
   const fetchData = async () => {
     const token = localStorage.getItem("token");
-    const baseUrl = "https://sams-zsar.onrender.com:8000";
+    const baseUrl = "https://sams-zsar.onrender.com";
 
     try {
       setLoading(true);
